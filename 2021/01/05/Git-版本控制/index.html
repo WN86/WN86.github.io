@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://wn86.github.io/images/git20210106/git_conflict1.png">
 <meta property="og:image" content="https://wn86.github.io/images/git20210106/git_conflict2.png">
 <meta property="article:published_time" content="2021-01-05T08:28:00.000Z">
-<meta property="article:modified_time" content="2021-01-06T03:32:10.034Z">
+<meta property="article:modified_time" content="2021-01-12T06:31:56.748Z">
 <meta property="article:author" content="WhiteNoise">
 <meta property="article:tag" content="程式,學習,coding">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>過去曾經詢問過資訊界前輩版本控制相關概念與基本操作，但自己實際建立和執行一個專案的過程中，發現不熟悉版控所導致的可怕後果，不僅版本線混亂，版本衝突時還選錯版本，下場淒慘。所以對於重要的Git不能只是略懂略懂，於是決定再來系統性地了解它！來吧！我要補交作業了……(<del>該還的債還是要還</del>) QAQ</p>
 <h2 id="主要內容"><a href="#主要內容" class="headerlink" title="主要內容"></a>主要內容</h2><ul>
 <li> Git 是什麼？為何要版本控制？</li>
-<li>什麼是 Repository? Clone? Push? Pull? Commit?</li>
+<li>什麼是 Repository? Clone? Push? Pull? Fetch? Commit?</li>
 <li>使用 SourceTree 管理 Git</li>
 <li>合併修改記錄與解決衝突</li>
 </ul>
@@ -117,7 +117,7 @@
 
 <p>（參考教學文：<a target="_blank" rel="noopener" href="https://backlog.com/git-tutorial/tw/">連猴子都能懂的Git入門指南</a>）</p>
 <h2 id="Git-是什麼？為何要版本控制？"><a href="#Git-是什麼？為何要版本控制？" class="headerlink" title="Git 是什麼？為何要版本控制？"></a>Git 是什麼？為何要版本控制？</h2><p>想把檔案恢復到編輯前的狀態，你會怎麼做呢？<br>當多人同時編輯檔案時，先編輯者的修改內容會被覆蓋。<br>Git 可以解決這樣的問題。Git 為分散式版本控制系統，是為了更好管理 Linux 內核而開發的，能保存更新歷史記錄，可顯示編輯前後內容差異，可復原指定版本，並進行衝突管理。</p>
-<h2 id="什麼是-Repository-Clone-Push-Pull-Commit"><a href="#什麼是-Repository-Clone-Push-Pull-Commit" class="headerlink" title="什麼是 Repository? Clone? Push? Pull? Commit?"></a>什麼是 Repository? Clone? Push? Pull? Commit?</h2><p>在管理 Git 前，有幾個常用的名詞概念需要先了解，簡介如下：</p>
+<h2 id="什麼是-Repository-Clone-Push-Pull-Fetch-Commit"><a href="#什麼是-Repository-Clone-Push-Pull-Fetch-Commit" class="headerlink" title="什麼是 Repository? Clone? Push? Pull? Fetch?  Commit?"></a>什麼是 Repository? Clone? Push? Pull? Fetch?  Commit?</h2><p>在管理 Git 前，有幾個常用的名詞概念需要先了解，簡介如下：</p>
 <ul>
 <li><p><strong>Repository</strong>：簡稱 Repo ，一般被譯為專案的倉庫或倉儲，能記錄檔案或目錄的狀態。分為遠端 Repo（下簡稱遠端）與本地 Repo（下簡稱本地）。</p>
 <p>  <em>遠端：多人共享，有專用 Server。</em><br>  <em>本地：用戶個人使用，比如在自己的電腦上配置的專案倉庫（資料夾）。</em></p>
@@ -126,7 +126,9 @@
 </li>
 <li><p><strong>Push</strong>：本地上傳到遠端。</p>
 </li>
-<li><p><strong>Pull</strong>：遠端下載到本地。</p>
+<li><p><strong>Pull</strong>：遠端下載到本地。（ pull ＝ fetch + merge ）</p>
+</li>
+<li><p><strong>Fetch</strong>：只取得遠端最新記錄，沒合併。</p>
 </li>
 <li><p><strong>Commit</strong>：檔案或目錄變更、新增後，提交（Commit）以儲存到 Repository 中。在 Repository 產生上次與本次狀態差異記錄（Revision）。一般在 Commit 時可敘明以下 2 點，以方便未來能迅速找到想復原的指定版本：</p>
 <p><em>1. 修改內容的摘要</em><br><em>2. 修改理由</em></p>
@@ -155,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="https://wn86.github.io/2021/01/05/Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" data-id="ckjkvaze70001m5hq0bbgazfs" data-title="Git 版本控制（入門）" class="article-share-link">Share</a> -->
+      <!-- <a data-url="https://wn86.github.io/2021/01/05/Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" data-id="ckjtmonbg00036bhq2hwz49f5" data-title="Git 版本控制（入門）" class="article-share-link">Share</a> -->
       <!--  -->
       
       
@@ -164,6 +166,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2021/01/12/Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%EF%BC%88%E9%80%B2%E9%9A%8E%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git 版本控制（進階）
+        
+      </div>
+    </a>
   
   
     <a href="/2021/01/04/test/" id="article-nav-older" class="article-nav-link-wrap">
@@ -225,6 +236,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/12/Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%EF%BC%88%E9%80%B2%E9%9A%8E%EF%BC%89/">Git 版本控制（進階）</a>
+          </li>
         
           <li>
             <a href="/2021/01/05/Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">Git 版本控制（入門）</a>
